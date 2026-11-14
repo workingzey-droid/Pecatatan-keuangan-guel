@@ -157,3 +157,11 @@ nav:has(#fab[aria-expanded="true"]) .fab-wrap{z-index:2}
 #monthDialog .month-grid button{width:100%;padding:12px 4px;background:#f4f7f2;color:#345143;font-size:.82rem;border-radius:9px}
 #monthDialog .month-grid button[aria-pressed=true]{background:#194b38;color:#fff}
 #monthDialog .month-close{margin-top:16px;background:transparent;color:#245e46;font-size:.85rem}
+
+/* Keep the modal surface stable while its contents gently enter. */
+#monthDialog[open]{animation:none}
+#monthDialog[open] .month-picker{animation:month-enter .36s cubic-bezier(.2,.7,.2,1) both}
+@keyframes month-enter{from{transform:translateY(9px)}to{transform:translateY(0)}}
+#monthDialog .month-close{min-height:44px;background:#eaf2e8;color:#194b38;border:1px solid #c9dcc8;border-radius:10px;font-weight:700}
+@media (hover:hover){#monthDialog .month-close:hover{background:#daeada}}
+@media (prefers-reduced-motion:reduce){#monthDialog[open] .month-picker{animation:none}}
