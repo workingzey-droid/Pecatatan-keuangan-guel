@@ -249,3 +249,29 @@ button,input[type="button"],input[type="submit"],input[type="reset"],[role="butt
 .logout-button{display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid #dce7db;border-radius:12px;background:#fff;color:#194b38}
 .logout-button svg{width:19px;height:19px}
 @media(hover:hover){.logout-button:hover{background:#eaf2e8}}
+
+
+/* Savings: one household progress summary and tidy goal cards. */
+#savings .section-head{margin:0 0 16px;align-items:center}
+#savingsOverview{margin-bottom:14px}
+.savings-overview-card{padding:18px 17px;background:#eaf2e8;border:1px solid #dbe8d8;border-radius:16px;box-shadow:0 5px 16px rgba(24,60,39,.07)}
+.savings-overview-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.savings-overview-head>div{display:grid;gap:6px}
+.savings-overview-head>div span{font-size:.75rem;color:#5d7163}
+.savings-overview-head>div strong{font-size:1.45rem;letter-spacing:-.04em;color:#194b38;font-variant-numeric:tabular-nums}
+.savings-overview-percent{font-size:.83rem;color:#194b38;white-space:nowrap}
+.savings-overview-card .progress{height:7px;margin:14px 0 9px;background:#d5e2d2}
+.savings-overview-card .progress i{background:#4b965a;transition:width .35s ease-out}
+.savings-overview-foot{display:flex;justify-content:space-between;gap:8px;font-size:.7rem;color:#68786d}
+.savings-goals{display:grid;gap:11px}
+.savings-goal-card{padding:15px 15px 13px;background:#fff;border:1px solid #e3eae0;border-radius:14px;box-shadow:0 5px 16px rgba(24,60,39,.07)}
+.savings-goal-head{display:flex;align-items:center;gap:10px;min-width:0}
+.savings-goal-title{display:grid;gap:4px;min-width:0;flex:1}
+.savings-goal-title strong{font-size:.86rem;color:#1d3026;overflow-wrap:anywhere}
+.savings-goal-title span{font-size:.7rem;color:#748176}
+.savings-goal-percent{font-size:.76rem;color:#34493d;white-space:nowrap}
+.savings-goal-card .progress{height:7px;margin:13px 0 9px;background:#e7eee4}
+.savings-goal-card .progress i{background:#55a04f;transition:width .35s ease-out}
+.savings-goal-foot{display:flex;justify-content:space-between;gap:8px;color:#68786d;font-size:.7rem;font-variant-numeric:tabular-nums}
+#withdrawSavings{width:100%;min-height:48px;margin-top:16px;border-radius:11px;background:#194b38;color:#fff}
+@media(prefers-reduced-motion:reduce){.savings-overview-card .progress i,.savings-goal-card .progress i{transition:none}}
