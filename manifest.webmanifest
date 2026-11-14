@@ -1,0 +1,14 @@
+{
+  "id": "./",
+  "name": "Uang Bersama",
+  "short_name": "Uang Bersama",
+  "description": "Catatan keuangan rumah tangga bersama.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f0",
+  "theme_color": "#194b38",
+  "icons": [
+    {"src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any"}
+  ]
+}
