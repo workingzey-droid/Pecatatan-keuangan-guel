@@ -78,3 +78,20 @@ dialog[open]{animation:sheet-in .22s ease-out}
 #auth .auth-signup span{color:#68786d}
 #auth .auth-signup button{font-size:.85rem}
 @media(max-width:420px){#auth{padding:24px 20px;margin-top:24px}}
+
+/* Sign-in layout inspired by the centred mobile reference. */
+body:has(#auth:not([hidden])){background:#fff}
+.app:has(#auth:not([hidden])){min-height:100vh;padding-bottom:40px}
+.app:has(#auth:not([hidden]))>header{display:none}
+#auth{max-width:400px;margin:clamp(40px,12vh,120px) auto 0;padding:20px 8px;border:0;border-radius:0;box-shadow:none;background:transparent}
+#auth .auth-intro{text-align:center}
+#auth .auth-icon{margin:0 auto 16px;width:54px;height:54px;border-radius:16px}
+#auth .auth-eyebrow{display:none}
+#auth h2{font-size:1.65rem;letter-spacing:-.035em;color:#1d3026}
+#auth .auth-intro>p:last-child{margin:8px 0 34px;font-size:.9rem}
+#auth label{margin-bottom:16px}
+#auth input{height:54px;background:#edf3ec;border:1px solid transparent;border-radius:10px}
+#auth input:focus{background:#fff;border-color:#4a8060}
+#auth .auth-submit{margin-top:16px;border-radius:28px;box-shadow:none}
+#auth .auth-signup{margin-top:32px}
+@media(max-width:420px){#auth{margin-top:clamp(35px,10vh,85px);padding:18px 6px}}
