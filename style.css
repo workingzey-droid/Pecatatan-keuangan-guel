@@ -109,3 +109,15 @@ nav button[data-page][aria-current]{animation:nav-select .24s ease-out}
 @media (prefers-reduced-motion:reduce){.fab-menu:not([hidden]),nav button[data-page][aria-current]{animation:none}}
 
 .fab-menu button span svg{width:18px;height:18px;stroke-width:2}
+
+/* Fan out the quick actions around the central button. */
+.fab-menu{bottom:calc(100% - 7px);width:0;height:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible}
+.fab-menu:not([hidden]){animation:none}
+:root nav .fab-menu button{position:absolute;display:grid;place-items:center;width:48px;height:48px;min-height:48px;padding:0;border:2px solid #fff;border-radius:50%;background:#e7f0e4;color:#194b38;box-shadow:0 5px 14px rgba(24,60,39,.2);animation:fan-in .24s ease-out backwards;transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease}
+.fab-menu button:nth-child(1){left:-92px;bottom:7px}
+.fab-menu button:nth-child(2){left:-24px;bottom:55px;animation-delay:.035s}
+.fab-menu button:nth-child(3){left:44px;bottom:7px;animation-delay:.07s}
+.fab-menu button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@keyframes fan-in{from{opacity:0;transform:translateY(14px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media (hover:hover){:root nav .fab-menu button:hover{transform:translateY(-4px) scale(1.08);background:#d2e8cf;box-shadow:0 8px 18px rgba(24,60,39,.25)}}
+@media (prefers-reduced-motion:reduce){:root nav .fab-menu button{animation:none;transition:none}}
