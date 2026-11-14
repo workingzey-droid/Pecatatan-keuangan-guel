@@ -204,3 +204,12 @@ button,input[type="button"],input[type="submit"],input[type="reset"],[role="butt
 .balance-wallet-row strong{text-align:right;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .balance-empty{font-size:.85rem;color:#68736b}
 #balanceDialog #balanceClose{width:100%;min-height:44px;margin-top:20px;background:#eaf2e8;color:#194b38;border:1px solid #c9dcc8;border-radius:10px;font-weight:700}
+
+/* Wallet brand marks retain their original proportions. */
+.wallet-identity{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
+.wallet-identity strong,.wallet-identity span{min-width:0;overflow-wrap:anywhere}
+.wallet-logo{display:block;flex:none;width:76px;height:32px;object-fit:contain;padding:3px;background:#fff;border-radius:6px}
+.balance-wallet-row .wallet-identity{color:#34493d}
+.wallet-logo-credits{font-size:.72rem;color:#68736b;margin:12px 0}
+.wallet-logo-credits p{font-size:inherit}
+.wallet-logo-credits a{color:#245e46}
