@@ -107,3 +107,5 @@ nav button{-webkit-tap-highlight-color:transparent}
 nav button[data-page][aria-current]{animation:nav-select .24s ease-out}
 @keyframes nav-select{from{transform:scale(.94)}to{transform:scale(1)}}
 @media (prefers-reduced-motion:reduce){.fab-menu:not([hidden]),nav button[data-page][aria-current]{animation:none}}
+
+.fab-menu button span svg{width:18px;height:18px;stroke-width:2}
