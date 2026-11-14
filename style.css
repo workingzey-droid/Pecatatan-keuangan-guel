@@ -179,3 +179,7 @@ nav:has(#fab[aria-expanded="true"]) .fab-wrap{z-index:2}
 
 /* Use the app's own feedback instead of the browser's blue tap flash. */
 button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"]{-webkit-tap-highlight-color:transparent}
+
+/* Centre both monthly cards on the same layout. */
+#home .summary div,#home .summary div+div{grid-template-columns:24px minmax(0,max-content);justify-content:center;text-align:center}
+#home .summary strong{text-align:left;overflow-wrap:anywhere}
