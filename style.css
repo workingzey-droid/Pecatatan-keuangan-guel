@@ -60,3 +60,21 @@ dialog[open]{animation:sheet-in .22s ease-out}
 :root nav .fab-menu button{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;width:100%;max-width:none;min-height:44px;padding:8px 10px;color:#194b38;font-size:.85rem;text-align:left}
 .fab-menu button span{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#e7f0e4;color:#194b38;font-size:1.1rem}
 @media (hover:hover){:root nav #fab:hover{background:#286b4d}}
+
+/* A welcoming sign-in, using the same palette as the dashboard. */
+#auth{max-width:450px;margin:clamp(18px,7vh,62px) auto 0;padding:30px;background:#fff;border:1px solid #e3ebe0;border-radius:22px;box-shadow:0 12px 32px rgba(24,60,39,.09)}
+.auth-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#e6f0e2;color:#194b38;margin-bottom:24px}
+.auth-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+#auth .auth-eyebrow{margin:0 0 9px;color:#52745e;font-size:.68rem;font-weight:750;letter-spacing:.1em}
+#auth h2{font-size:clamp(1.5rem,6vw,1.85rem);letter-spacing:-.04em;line-height:1.15;color:#194b38}
+#auth .auth-intro>p:last-child{margin:11px 0 26px;color:#607367;font-size:.9rem}
+#auth label{font-size:.84rem;color:#263b2e;gap:8px;margin:0 0 18px}
+#auth input{height:52px;border-color:#d7e1d5;border-radius:11px;background:#fbfcf9;padding:0 15px}
+#auth input::placeholder{color:#89998c;font-weight:400}
+#auth input:focus{border-color:#4a8060;background:#fff}
+#auth .auth-submit{width:100%;min-height:52px;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:12px;background:#194b38;border-radius:11px;box-shadow:0 5px 12px rgba(25,75,56,.16)}
+#auth .auth-submit span{color:inherit;font-size:1.1rem}
+#auth .auth-signup{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3px;margin-top:19px;font-size:.85rem}
+#auth .auth-signup span{color:#68786d}
+#auth .auth-signup button{font-size:.85rem}
+@media(max-width:420px){#auth{padding:24px 20px;margin-top:24px}}
