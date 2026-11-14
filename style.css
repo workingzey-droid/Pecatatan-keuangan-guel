@@ -134,3 +134,15 @@ nav:has(#fab[aria-expanded="true"])::before{content:"";position:fixed;inset:0;ba
 nav:has(#fab[aria-expanded="true"]) .fab-wrap{z-index:2}
 @keyframes fab-backdrop-in{from{opacity:0}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){nav:has(#fab[aria-expanded="true"])::before{animation:none}}
+
+/* Savings goal card inspired by the selected reference. */
+#homeGoals .goal-card{padding:16px;background:#fff;border:1px solid #e8eee5;border-radius:14px;box-shadow:0 5px 16px rgba(24,60,39,.08)}
+.goal-card-head{display:flex;align-items:center;gap:10px;min-width:0}
+.goal-icon{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:50%;background:#e3f1df;color:#398b4a}
+.goal-icon svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.goal-detail{display:grid;gap:4px;min-width:0;flex:1}
+.goal-detail strong{font-size:.86rem;overflow-wrap:anywhere;color:#1d3026}
+.goal-detail span{font-size:.72rem;color:#68786d;overflow-wrap:anywhere}
+.goal-percent{font-size:.78rem;color:#1d3026;white-space:nowrap}
+#homeGoals .goal-card .progress{margin:14px 0 0;height:7px;background:#e8eee6}
+#homeGoals .goal-card .progress i{border-radius:inherit;background:#55a04f}
