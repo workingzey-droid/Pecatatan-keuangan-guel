@@ -95,3 +95,15 @@ body:has(#auth:not([hidden])){background:#fff}
 #auth .auth-submit{margin-top:16px;border-radius:28px;box-shadow:none}
 #auth .auth-signup{margin-top:32px}
 @media(max-width:420px){#auth{margin-top:clamp(35px,10vh,85px);padding:18px 6px}}
+
+/* Navigation feedback and centred quick action. */
+nav button{-webkit-tap-highlight-color:transparent}
+.fab-wrap{max-width:150px}
+:root nav #fab{font-size:0;position:relative}
+:root nav #fab::before,:root nav #fab::after{content:"";position:absolute;top:50%;left:50%;width:20px;height:2px;border-radius:2px;background:currentColor;transform:translate(-50%,-50%)}
+:root nav #fab::after{transform:translate(-50%,-50%) rotate(90deg)}
+.fab-menu:not([hidden]){animation:fab-menu-in .2s ease-out}
+@keyframes fab-menu-in{from{opacity:0;transform:translate(-50%,8px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
+nav button[data-page][aria-current]{animation:nav-select .24s ease-out}
+@keyframes nav-select{from{transform:scale(.94)}to{transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.fab-menu:not([hidden]),nav button[data-page][aria-current]{animation:none}}
