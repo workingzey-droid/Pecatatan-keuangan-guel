@@ -240,3 +240,12 @@ button,input[type="button"],input[type="submit"],input[type="reset"],[role="butt
 .page-enter{animation:page-rise .28s cubic-bezier(.2,.7,.2,1) both}
 @keyframes page-rise{from{opacity:.55;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.page-enter{animation:none}}
+
+
+/* Individual history entries read as clear, tappable cards. */
+#history #transactions .row{margin-bottom:10px;padding:14px 15px;background:#fff;border:1px solid #e2eae0;border-radius:12px;box-shadow:0 4px 14px rgba(24,60,39,.07)}
+#history #transactions .row:last-child{margin-bottom:0}
+#history #transactions .row>button{border-radius:8px}
+.logout-button{display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid #dce7db;border-radius:12px;background:#fff;color:#194b38}
+.logout-button svg{width:19px;height:19px}
+@media(hover:hover){.logout-button:hover{background:#eaf2e8}}
