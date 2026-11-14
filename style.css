@@ -2,3 +2,51 @@
 :root nav button{min-width:0;flex:1;max-width:150px;padding:14px 5px}
 .transaction-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.transaction-actions button{padding:14px 4px;font-size:.85rem;overflow-wrap:anywhere}
 
+/* Beranda: hierarchy and feedback for the household overview. */
+:root{color:#1d3026;background:#f7f7f0}
+.app{max-width:640px;padding:28px 22px 120px}
+.app>header{align-items:flex-end;margin-bottom:30px}
+.app>header small{font-size:.74rem;letter-spacing:.02em;color:#66776c}
+.app>header h1{font-size:1.4rem;letter-spacing:-.035em;margin:5px 0 0}
+.quiet{border-radius:8px;font-size:.84rem;padding:9px 11px}
+#home .balance{position:relative;overflow:hidden;gap:9px;min-height:164px;padding:24px;background:#194b38;border-radius:16px}
+#home .balance:after{content:"";position:absolute;left:24px;bottom:0;width:42px;height:3px;background:#bfdb9a;border-radius:3px 3px 0 0}
+#home .balance span{font-size:.82rem;color:#d9e8d9}
+#home .balance strong{font-size:clamp(1.85rem,7vw,2.35rem);line-height:1.1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+#home .balance small{font-size:.72rem;line-height:1.5;color:#d6e7d7}
+#home .section-head{margin:30px 0 14px;align-items:center}
+#home h2{font-size:1rem;letter-spacing:-.02em}
+#home input[type=month]{width:auto;max-width:52%;border-color:#d3ddd3;background:#fff;font-size:.8rem;padding:10px;border-radius:8px}
+#home .summary{margin:0 0 22px;border-color:#dce4d9}
+#home .summary div{gap:7px;padding:16px 2px}
+#home .summary div+div{padding-left:20px;border-color:#dce4d9}
+#home .summary span{font-size:.75rem;color:#607367}
+#home .summary strong{font-size:1rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.transaction-actions{gap:8px}
+.transaction-actions button{min-height:50px;background:#225941;font-size:.78rem;letter-spacing:-.01em;border:1px solid transparent;border-radius:10px}
+.transaction-actions button[data-new-kind=saving]{background:#e3eddd;color:#1b4a33;border-color:#c8dac6}
+#home .link{font-size:.8rem}
+#home .row{padding:14px 0;border-color:#dce4d9}
+#home .rowhead strong{font-size:.9rem}
+#home .rowhead span,#home .row p{font-size:.76rem}
+#home .progress{height:6px;background:#e2e9dc;margin:12px 0}
+#home .progress i{background:#6b9c69;transition:width .35s ease-out}
+#message:not(:empty){font-size:.85rem;border-left:3px solid #c8953e;border-radius:8px;padding:12px 14px;background:#fff4de;color:#574321}
+nav{background:#fff;border-color:#e0e8dd;box-shadow:0 -5px 18px rgba(24,60,39,.05)}
+nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:58px;border-radius:9px;font-size:.75rem;color:#516158;padding:7px 4px}
+nav button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+nav button[aria-current]{background:#e7f0e4;color:#194b38}
+button,input,select{transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
+@media (hover:hover){button:not(:disabled):hover{filter:brightness(.95)}.quiet:hover,.link:hover{background:#e7efe5}nav button:hover{background:#eff4ed}}
+button:not(:disabled):active{transform:scale(.97)}
+dialog[open]{animation:sheet-in .22s ease-out}
+@keyframes sheet-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+
+/* Soft elevation separates the overview cards from the page. */
+#home .balance{box-shadow:0 8px 20px rgba(24,60,39,.14)}
+#home .summary,#homeGoals .row{background:#fff;border:1px solid #e1e9df;border-radius:12px;box-shadow:0 5px 16px rgba(24,60,39,.08)}
+#home .summary div{padding:16px}
+#home .summary div+div{padding-left:20px}
+#homeGoals .row{padding:16px;margin-bottom:12px}
+
