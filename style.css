@@ -165,3 +165,14 @@ nav:has(#fab[aria-expanded="true"]) .fab-wrap{z-index:2}
 #monthDialog .month-close{min-height:44px;background:#eaf2e8;color:#194b38;border:1px solid #c9dcc8;border-radius:10px;font-weight:700}
 @media (hover:hover){#monthDialog .month-close:hover{background:#daeada}}
 @media (prefers-reduced-motion:reduce){#monthDialog[open] .month-picker{animation:none}}
+
+/* Monthly totals as distinct, softly coloured cards. */
+#home .summary{gap:10px;background:transparent;border:0;border-radius:0;box-shadow:none}
+#home .summary div,#home .summary div+div{min-width:0;display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:8px;row-gap:8px;align-items:center;padding:16px 14px;border:0;border-radius:12px;box-shadow:0 4px 12px rgba(24,60,39,.06)}
+#home .summary div:first-child{background:#f1eafb}
+#home .summary div:last-child{background:#fff0e9}
+#home .summary span{grid-column:1 / -1;font-size:.73rem;color:#68736b}
+#home .summary strong{grid-column:2;min-width:0;font-size:clamp(.83rem,3.6vw,1rem)}
+#home .summary div::before{grid-column:1;grid-row:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;color:#fff;font-size:1rem;font-weight:700;line-height:1}
+#home .summary div:first-child::before{content:"+";background:#8752c7}
+#home .summary div:last-child::before{content:"−";background:#ef7647}
