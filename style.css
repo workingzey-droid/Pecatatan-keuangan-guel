@@ -186,3 +186,9 @@ button,input[type="button"],input[type="submit"],input[type="reset"],[role="butt
 
 /* Keep the icons aligned even when the amounts have different lengths. */
 #home .summary div,#home .summary div+div{grid-template-columns:24px minmax(0,1fr);justify-content:stretch}
+
+/* Draw the signs geometrically so they stay centred in each circle. */
+#home .summary div::before{content:"";background-repeat:no-repeat;background-position:center}
+#home .summary div:first-child::before{content:"";background-image:linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);background-size:10px 2px,2px 10px}
+#home .summary div:last-child::before{content:"";background-image:linear-gradient(#fff,#fff);background-size:10px 2px}
+#home .summary div:first-child::before,#home .summary div:last-child::before{background-position:center;background-repeat:no-repeat}
