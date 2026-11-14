@@ -183,3 +183,6 @@ button,input[type="button"],input[type="submit"],input[type="reset"],[role="butt
 /* Centre both monthly cards on the same layout. */
 #home .summary div,#home .summary div+div{grid-template-columns:24px minmax(0,max-content);justify-content:center;text-align:center}
 #home .summary strong{text-align:left;overflow-wrap:anywhere}
+
+/* Keep the icons aligned even when the amounts have different lengths. */
+#home .summary div,#home .summary div+div{grid-template-columns:24px minmax(0,1fr);justify-content:stretch}
