@@ -176,3 +176,6 @@ nav:has(#fab[aria-expanded="true"]) .fab-wrap{z-index:2}
 #home .summary div::before{grid-column:1;grid-row:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;color:#fff;font-size:1rem;font-weight:700;line-height:1}
 #home .summary div:first-child::before{content:"+";background:#8752c7}
 #home .summary div:last-child::before{content:"−";background:#ef7647}
+
+/* Use the app's own feedback instead of the browser's blue tap flash. */
+button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"]{-webkit-tap-highlight-color:transparent}
