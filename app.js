@@ -35,26 +35,23 @@ function page(name, resetDate = true) {
   }
 }
 
-function renderHeaderAndWeek() {
-  const now = new Date();
-  const todayStr = today();
-  const formattedToday = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'short' }).format(now);
-  const labelEl = $('#todayDateLabel');
-  if (labelEl) labelEl.textContent = `${formattedToday} · Rumah tangga`;
-
+function renderWeekStrip() {
   const strip = $('#weekStrip');
   if (!strip) return;
-  const dayNames = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
-  const startOfWeek = new Date(now);
-  startOfWeek.setDate(now.getDate() - now.getDay());
 
+  const [year, month, day] = historyDate.split('-').map(Number);
+  const selectedDate = new Date(year, month - 1, day);
+  const startOfWeek = new Date(selectedDate);
+  startOfWeek.setDate(selectedDate.getDate() - selectedDate.getDay());
+
+  const dayNames = ['Min', 'Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab'];
   let html = '';
   for (let i = 0; i < 7; i++) {
     const d = new Date(startOfWeek);
     d.setDate(startOfWeek.getDate() + i);
     const iso = new Date(d.getTime() - d.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
-    const isToday = iso === todayStr;
-    html += `<button type="button" class="week-day${isToday ? ' is-today' : ''}" data-week-date="${iso}" aria-label="Lihat transaksi ${dayNames[i]} ${d.getDate()}">
+    const isSelected = iso === historyDate;
+    html += `<button type="button" class="week-day${isSelected ? ' is-selected' : ''}" data-week-date="${iso}" aria-label="Pilih ${dayNames[i]} ${d.getDate()}" aria-pressed="${isSelected}">
       <span class="week-day-name">${dayNames[i]}</span>
       <span class="week-day-num">${d.getDate()}</span>
     </button>`;
@@ -62,6 +59,13 @@ function renderHeaderAndWeek() {
   strip.innerHTML = html;
 }
 
+function renderHeaderAndWeek() {
+  const now = new Date();
+  const formattedToday = new Intl.DateTimeFormat('id-ID', { weekday: 'long', day: 'numeric', month: 'short' }).format(now);
+  const labelEl = $('#todayDateLabel');
+  if (labelEl) labelEl.textContent = `${formattedToday} · Rumah tangga`;
+  renderWeekStrip();
+}
 function totals(rows) {
   return rows.reduce((a, t) => {
     const n = Number(t.amount);
@@ -357,6 +361,7 @@ function showMonths() {
 function updateHistoryDate() {
   const [y, m, d] = historyDate.split('-').map(Number);
   $('#historyDateLabel').textContent = new Intl.DateTimeFormat('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }).format(new Date(y, m - 1, d));
+  renderWeekStrip();
 }
 
 function showHistoryCalendar() {

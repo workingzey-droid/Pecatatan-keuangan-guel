@@ -172,24 +172,24 @@ select:focus-visible {
   background: var(--surface-white);
 }
 
-.week-day.is-today {
+.week-day.is-selected {
   background: var(--ink-primary);
   color: #ffffff;
   padding: 9px 4px;
 }
 
-.week-day.is-today .week-day-name {
+.week-day.is-selected .week-day-name {
   color: #d4d4d8;
 }
 
-.week-day.is-today .week-day-num {
+.week-day.is-selected .week-day-num {
   background: transparent;
   border-color: transparent;
   color: #ffffff;
 }
 
 @media (hover: hover) {
-  .week-day:not(.is-today):hover .week-day-num {
+  .week-day:not(.is-selected):hover .week-day-num {
     border-color: var(--ink-primary);
   }
 }
@@ -641,6 +641,7 @@ select:focus-visible {
   font-size: 0.86rem;
   font-weight: 700;
   text-align: left;
+  margin-bottom: 12px;
 }
 
 .history-date-icon {
