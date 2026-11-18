@@ -91,11 +91,17 @@ function goalMarkup(g, home = false) {
         ${iconSvg}
         <div class="goal-detail">
           <strong>${esc(g.name)}</strong>
-          <span>${money(saved)} / ${money(target)}</span>
+          <span>Target ${money(target)}</span>
         </div>
         <strong class="goal-percent">${pct}%</strong>
       </div>
-      <div class="progress"><i style="width:${progress}%"></i></div>
+      <div class="goal-card-amount">
+        <strong>${money(saved)}</strong>
+        <span>terkumpul</span>
+      </div>
+      <div class="progress" role="progressbar" aria-label="Progres ${esc(g.name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}">
+        <i style="width:${progress}%"></i>
+      </div>
     </div>`;
   }
 
