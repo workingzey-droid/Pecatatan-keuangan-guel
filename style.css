@@ -426,61 +426,32 @@ select:focus-visible {
 /* Kartu Target Tabungan (Beranda & Tab Tabungan) */
 #homeGoals .goal-card,
 .savings-goal-card {
+  display: grid;
+  gap: 14px;
   padding: 18px;
-  background: var(--surface-white);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-card);
+  background: var(--pastel-sky);
+  border: 1.5px solid var(--pastel-sky-border);
+  border-radius: 24px;
 }
 
 .goal-card-head,
 .savings-goal-head {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   min-width: 0;
 }
 
-#homeGoals .goal-card {
-  display: grid;
-  gap: 14px;
-  background: var(--pastel-sky);
-  border: 1.5px solid var(--pastel-sky-border);
-  border-radius: 24px;
-}
-
-#homeGoals .goal-card-head {
-  gap: 10px;
-}
-
-#homeGoals .goal-icon {
-  width: 38px;
-  height: 38px;
-  background: var(--surface-white);
-  color: var(--ink-primary);
-}
-
-#homeGoals .goal-detail strong {
-  font-size: 0.94rem;
-  font-weight: 800;
-}
-
-#homeGoals .goal-detail span,
-.goal-card-amount span {
-  color: #27444e;
-}
-
-#homeGoals .goal-percent {
-  background: var(--surface-white);
-}
-
-.goal-card-amount {
+.goal-card-amount,
+.savings-goal-amount {
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
   gap: 7px;
 }
 
-.goal-card-amount strong {
+.goal-card-amount strong,
+.savings-goal-amount strong {
   font-size: clamp(1.55rem, 6.5vw, 2rem);
   line-height: 1.06;
   font-weight: 800;
@@ -489,12 +460,15 @@ select:focus-visible {
   overflow-wrap: anywhere;
 }
 
-.goal-card-amount span {
+.goal-card-amount span,
+.savings-goal-amount span {
+  color: #27444e;
   font-size: 0.8rem;
   font-weight: 600;
 }
 
-#homeGoals .goal-card .progress {
+.goal-card .progress,
+.savings-goal-card .progress {
   height: 9px;
   margin: 0;
   background: rgba(28, 28, 30, 0.12);
@@ -503,12 +477,12 @@ select:focus-visible {
 .goal-icon {
   display: grid;
   place-items: center;
-  width: 40px;
-  height: 40px;
+  width: 38px;
+  height: 38px;
   flex: none;
   border-radius: 50%;
-  background: var(--pastel-lavender);
-  color: var(--pastel-lavender-deep);
+  background: var(--surface-white);
+  color: var(--ink-primary);
 }
 
 .goal-icon svg {
@@ -531,8 +505,8 @@ select:focus-visible {
 
 .goal-detail strong,
 .savings-goal-title strong {
-  font-size: 0.92rem;
-  font-weight: 700;
+  font-size: 0.94rem;
+  font-weight: 800;
   color: var(--ink-primary);
   overflow-wrap: anywhere;
 }
@@ -540,7 +514,7 @@ select:focus-visible {
 .goal-detail span,
 .savings-goal-title span {
   font-size: 0.76rem;
-  color: var(--ink-secondary);
+  color: #27444e;
   overflow-wrap: anywhere;
 }
 
@@ -549,7 +523,7 @@ select:focus-visible {
   font-size: 0.8rem;
   font-weight: 800;
   color: var(--ink-primary);
-  background: var(--bg-paper);
+  background: var(--surface-white);
   padding: 5px 10px;
   border-radius: var(--radius-pill);
   white-space: nowrap;
@@ -639,7 +613,8 @@ select:focus-visible {
 }
 
 .savings-goal-foot {
-  margin-top: 10px;
+  margin-top: 0;
+  color: #27444e;
 }
 
 .savings-goals {

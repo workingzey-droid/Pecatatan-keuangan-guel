@@ -115,11 +115,14 @@ function goalMarkup(g, home = false) {
       </div>
       <strong class="savings-goal-percent">${pct}%</strong>
     </div>
+    <div class="savings-goal-amount">
+      <strong>${money(saved)}</strong>
+      <span>terkumpul</span>
+    </div>
     <div class="progress" role="progressbar" aria-label="Progres ${esc(g.name)}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${progress}">
       <i style="width:${progress}%"></i>
     </div>
     <div class="savings-goal-foot">
-      <span>${money(saved)} terkumpul</span>
       <span>${remaining > 0 ? `Sisa ${money(remaining)}` : 'Target tercapai'}</span>
     </div>
   </article>`;
