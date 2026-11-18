@@ -80,53 +80,44 @@ select:focus-visible {
   padding: 24px 20px 128px;
 }
 
-/* Header bergaya daily planner */
+/* Header ringkas dengan penanda tanggal hari ini */
 .app-header {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 20px;
+  align-items: flex-start;
+  margin-bottom: 22px;
 }
 
 .header-copy small {
-  display: block;
-  font-size: 0.78rem;
-  font-weight: 600;
-  color: var(--ink-secondary);
-  margin-bottom: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: var(--radius-pill);
+  background: var(--pastel-mint);
+  color: var(--pastel-mint-deep);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 8px;
+}
+
+.header-copy small::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+  flex: none;
 }
 
 .header-copy h1 {
   margin: 0;
-  font-size: 1.55rem;
+  font-size: clamp(1.48rem, 5.4vw, 1.72rem);
+  line-height: 1.18;
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.045em;
   color: var(--ink-primary);
-}
-
-.header-pill-btn {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border-radius: 50%;
-  background: var(--surface-white);
-  color: var(--ink-primary);
-  border: 1px solid var(--border-subtle);
-  flex: none;
-}
-
-.header-pill-btn svg {
-  width: 20px;
-  height: 20px;
-}
-
-@media (hover: hover) {
-  .header-pill-btn:hover {
-    background: var(--surface-muted);
-  }
 }
 
 /* Status / notifikasi */
