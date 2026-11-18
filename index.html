@@ -1,14 +1,342 @@
 <!doctype html>
-<html lang="id"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Uang Bersama</title><meta name="theme-color" content="#194b38"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"><link rel="stylesheet" href="style.css?v=savings-single-target-2"></head>
-<body><main class="app"><header><div><small>Keuangan rumah tangga</small><h1>Uang kayla &amp; Ajay</h1></div></header>
-<div id="message" role="status" aria-live="polite"></div>
-<div id="content"><section id="home"><button type="button" class="balance" id="balanceButton" aria-haspopup="dialog" aria-controls="balanceDialog"><span>Saldo yang bisa dipakai</span><strong id="balance">Rp0</strong><small>Di luar tabungan · Ketuk untuk rincian</small></button><div class="section-head"><h2>Ringkasan bulanan</h2><input id="month" type="hidden"><button type="button" id="monthButton" class="month-button" aria-haspopup="dialog" aria-controls="monthDialog"></button></div><div class="summary"><div><span>Masuk</span><strong id="income">Rp0</strong></div><div><span>Keluar</span><strong id="expense">Rp0</strong></div></div><div class="section-head"><h2>Target tabungan</h2><button class="link" data-page="savings">Lihat semua →</button></div><div id="homeGoals"></div></section>
-<section id="history" hidden><div class="section-head"><h2>Riwayat</h2><button id="newHistory" class="link">+ Catat</button></div><button type="button" id="historyDateButton" class="history-date-button" aria-haspopup="dialog" aria-controls="historyDateDialog"><svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg><span id="historyDateLabel"></span><span aria-hidden="true">⌄</span></button><div id="transactions"></div></section>
-<section id="savings" hidden><div class="section-head"><h2>Tabungan</h2><button id="newGoal" class="link">+ Target</button></div><div id="savingsOverview"></div><div id="goals" class="savings-goals"></div><button id="withdrawSavings" class="secondary">Tarik tabungan</button></section>
-<section id="wallets" hidden><div class="section-head"><h2>Dompet</h2><button id="newWallet" class="link">+ Dompet</button></div><p>Saldo dihitung dari transaksi, setoran tabungan, dan transfer.</p><div id="walletList"></div><details class="wallet-logo-credits"><summary>Sumber logo</summary><p>Logo BCA milik PT Bank Central Asia Tbk. Logo OCBC oleh Oversea-Chinese Banking Corporation, Limited, melalui <a href="https://commons.wikimedia.org/wiki/File:Logo-ocbc.svg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, tanpa perubahan. Logo ShopeePay milik ShopeePay.</p></details><button id="newTransfer" class="secondary">Transfer antar dompet</button></section>
-<nav aria-label="Navigasi utama"><button data-page="home" aria-current="page"><svg aria-hidden="true"   xmlns="http://www.w3.org/2000/svg"   width="24"   height="24"   viewBox="0 0 24 24"   fill="none"   stroke="currentColor"   stroke-width="2"   stroke-linecap="round"   stroke-linejoin="round" >   <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" />   <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /> </svg>Beranda</button><button data-page="history"><svg aria-hidden="true"   xmlns="http://www.w3.org/2000/svg"   width="24"   height="24"   viewBox="0 0 24 24"   fill="none"   stroke="currentColor"   stroke-width="2"   stroke-linecap="round"   stroke-linejoin="round" >   <path d="M3 5h.01" />   <path d="M3 12h.01" />   <path d="M3 19h.01" />   <path d="M8 5h13" />   <path d="M8 12h13" />   <path d="M8 19h13" /> </svg>Riwayat</button><div class="fab-wrap"><div id="fabMenu" class="fab-menu" hidden><button type="button" data-new-kind="income" aria-label="Pemasukan" title="Pemasukan"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></button><button type="button" data-new-kind="expense" aria-label="Pengeluaran" title="Pengeluaran"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14"/></svg></button><button type="button" data-new-kind="saving" aria-label="Tabungan" title="Tabungan"><svg aria-hidden="true"   xmlns="http://www.w3.org/2000/svg"   width="24"   height="24"   viewBox="0 0 24 24"   fill="none"   stroke="currentColor"   stroke-width="2"   stroke-linecap="round"   stroke-linejoin="round" >   <path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z" />   <path d="M16 10h.01" />   <path d="M2 8v1a2 2 0 0 0 2 2h1" /> </svg> </button></div><button type="button" id="fab" aria-label="Catat transaksi" aria-expanded="false" aria-controls="fabMenu">+</button></div><button data-page="savings"><svg aria-hidden="true"   xmlns="http://www.w3.org/2000/svg"   width="24"   height="24"   viewBox="0 0 24 24"   fill="none"   stroke="currentColor"   stroke-width="2"   stroke-linecap="round"   stroke-linejoin="round" >   <path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z" />   <path d="M16 10h.01" />   <path d="M2 8v1a2 2 0 0 0 2 2h1" /> </svg>Tabungan</button><button data-page="wallets"><svg aria-hidden="true"   xmlns="http://www.w3.org/2000/svg"   width="24"   height="24"   viewBox="0 0 24 24"   fill="none"   stroke="currentColor"   stroke-width="2"   stroke-linecap="round"   stroke-linejoin="round" >   <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />   <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" /> </svg>Dompet</button></nav></div></main>
-<dialog id="historyDateDialog" aria-labelledby="historyCalendarTitle"><div class="history-calendar"><div class="history-calendar-head"><button type="button" id="historyPrevMonth" aria-label="Bulan sebelumnya">&#8249;</button><h2 id="historyCalendarTitle"></h2><button type="button" id="historyNextMonth" aria-label="Bulan berikutnya">&#8250;</button></div><div class="history-weekdays" aria-hidden="true"><span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span></div><div id="historyCalendarGrid" class="history-calendar-grid"></div><button type="button" id="historyToday">Hari ini</button><button type="button" id="historyDateClose">Tutup</button></div></dialog><dialog id="balanceDialog" aria-labelledby="balanceTitle"><div class="balance-dialog"><h2 id="balanceTitle">Saldo setiap dompet</h2><p>Di luar dompet Tabungan</p><div id="balanceWalletList"></div><button type="button" id="balanceClose">Tutup</button></div></dialog><dialog id="monthDialog" aria-labelledby="monthTitle"><div class="month-picker"><div class="month-picker-head"><button type="button" id="prevYear" aria-label="Tahun sebelumnya">&#8249;</button><h2 id="monthTitle"></h2><button type="button" id="nextYear" aria-label="Tahun berikutnya">&#8250;</button></div><div id="monthGrid" class="month-grid"></div><button type="button" id="monthClose" class="month-close">Tutup</button></div></dialog><dialog id="transactionDialog"><form id="transactionForm"><div class="section-head"><h2 id="transactionTitle">Catat transaksi</h2><button type="button" class="link close">Tutup</button></div><p class="dialogMessage" role="status"></p><label>Jenis<select name="kind"><option value="expense">Pengeluaran</option><option value="income">Pemasukan</option><option value="saving">Setoran tabungan</option><option value="saving_withdrawal" hidden>Penarikan tabungan</option></select></label><label>Nominal (Rp)<input name="amount" type="number" min="1" max="9000000000000" step="1" required inputmode="numeric"></label><label>Tanggal<input name="transaction_date" type="date" required></label><label>Kategori<input name="category" required maxlength="80" placeholder="Contoh: belanja"></label><label><span id="walletLabel">Dompet</span><select name="wallet" required></select></label><p id="walletHint" hidden>Tambahkan dompet di menu Dompet terlebih dahulu.</p><label id="goalField" hidden>Target<select name="goal_id"></select></label><div class="actions"><button>Simpan</button><button type="button" id="deleteTransaction" class="danger" hidden>Hapus</button></div></form></dialog>
-<dialog id="goalDialog"><form id="goalForm"><div class="section-head"><h2>Target baru</h2><button type="button" class="link close">Tutup</button></div><p class="dialogMessage" role="status"></p><label>Nama target<input name="name" required maxlength="80"></label><label>Nominal target (Rp)<input name="target" type="number" min="1" max="9000000000000" step="1" required></label><button>Simpan target</button></form></dialog>
-<dialog id="walletDialog"><form id="walletForm"><div class="section-head"><h2>Dompet baru</h2><button type="button" class="link close">Tutup</button></div><p class="dialogMessage" role="status"></p><label>Nama dompet<input name="name" required maxlength="80" placeholder="Contoh: BCA atau Tunai"></label><label>Jenis dompet<select name="kind"><option value="cash">Tunai</option><option value="bank">Rekening bank</option><option value="ewallet">E-wallet</option><option value="other">Lainnya</option></select></label><p>Saldo awal Rp0. Catat pemasukan untuk menambah saldo.</p><button>Simpan dompet</button></form></dialog>
-<dialog id="transferDialog"><form id="transferForm"><div class="section-head"><h2>Transfer antar dompet</h2><button type="button" class="link close">Tutup</button></div><p class="dialogMessage" role="status" aria-live="polite"></p><label>Dompet asal<select name="source_wallet" required></select></label><label>Dompet tujuan<select name="destination_wallet" required></select></label><label>Nominal (Rp)<input name="amount" type="number" min="1" max="9000000000000" step="1" required inputmode="numeric"></label><label>Tanggal<input name="transfer_date" type="date" required></label><p>Transfer tidak dihitung sebagai pemasukan atau pengeluaran.</p><button>Simpan transfer</button></form></dialog>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script><script src="app.js?v=no-login-1"></script></body></html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Uang Bersama</title>
+  <meta name="theme-color" content="#f8f7f4">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="style.css?v=editorial-pastel-1">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <div class="header-copy">
+        <small id="todayDateLabel">Keuangan rumah tangga</small>
+        <h1>Uang Kayla &amp; Ajay</h1>
+      </div>
+      <button type="button" class="header-pill-btn" data-page="wallets" aria-label="Buka daftar dompet" title="Dompet">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/>
+          <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>
+        </svg>
+      </button>
+    </header>
+
+    <div id="message" role="status" aria-live="polite"></div>
+
+    <div id="content">
+      <!-- BERANDA -->
+      <section id="home">
+        <div id="weekStrip" class="week-strip" aria-label="Kalender minggu ini"></div>
+
+        <button type="button" class="balance" id="balanceButton" aria-haspopup="dialog" aria-controls="balanceDialog">
+          <div class="balance-top">
+            <span class="balance-label">Saldo siap pakai</span>
+            <span class="balance-badge">Rincian dompet ↗</span>
+          </div>
+          <strong id="balance">Rp0</strong>
+          <div class="balance-cta">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="5" width="20" height="14" rx="3"/>
+              <path d="M2 10h20"/>
+            </svg>
+            <span>Di luar tabungan · Ketuk untuk rincian</span>
+          </div>
+        </button>
+
+        <div class="section-head">
+          <h2>Ringkasan bulanan</h2>
+          <input id="month" type="hidden">
+          <button type="button" id="monthButton" class="month-button" aria-haspopup="dialog" aria-controls="monthDialog"></button>
+        </div>
+
+        <div class="summary">
+          <div class="summary-card summary-card--income">
+            <div class="summary-card-top">
+              <span class="summary-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 5v14M5 12l7 7 7-7"/>
+                </svg>
+              </span>
+              <span>Masuk</span>
+            </div>
+            <strong id="income">Rp0</strong>
+          </div>
+
+          <div class="summary-card summary-card--expense">
+            <div class="summary-card-top">
+              <span class="summary-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 19V5M5 12l7-7 7 7"/>
+                </svg>
+              </span>
+              <span>Keluar</span>
+            </div>
+            <strong id="expense">Rp0</strong>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2>Target tabungan</h2>
+          <button type="button" class="link" data-page="savings">Lihat semua</button>
+        </div>
+        <div id="homeGoals"></div>
+      </section>
+
+      <!-- RIWAYAT -->
+      <section id="history" hidden>
+        <div class="section-head">
+          <h2>Riwayat</h2>
+          <button type="button" id="newHistory" class="pill-action">+ Catat</button>
+        </div>
+        <button type="button" id="historyDateButton" class="history-date-button" aria-haspopup="dialog" aria-controls="historyDateDialog">
+          <span class="history-date-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="16" rx="3"/>
+              <path d="M16 3v4M8 3v4M3 10h18"/>
+            </svg>
+          </span>
+          <span id="historyDateLabel"></span>
+          <span class="history-date-chevron" aria-hidden="true">⌄</span>
+        </button>
+        <div id="transactions"></div>
+      </section>
+
+      <!-- TABUNGAN -->
+      <section id="savings" hidden>
+        <div class="section-head">
+          <h2>Tabungan</h2>
+          <button type="button" id="newGoal" class="pill-action">+ Target</button>
+        </div>
+        <div id="savingsOverview"></div>
+        <div id="goals" class="savings-goals"></div>
+        <button type="button" id="withdrawSavings" class="secondary">Tarik tabungan</button>
+      </section>
+
+      <!-- DOMPET -->
+      <section id="wallets" hidden>
+        <div class="section-head">
+          <h2>Dompet</h2>
+          <button type="button" id="newWallet" class="pill-action">+ Dompet</button>
+        </div>
+        <p class="section-desc">Saldo dihitung otomatis dari transaksi, setoran tabungan, dan transfer.</p>
+        <div id="walletList"></div>
+        <details class="wallet-logo-credits">
+          <summary>Sumber logo</summary>
+          <p>Logo BCA milik PT Bank Central Asia Tbk. Logo OCBC oleh Oversea-Chinese Banking Corporation, Limited, melalui <a href="https://commons.wikimedia.org/wiki/File:Logo-ocbc.svg" target="_blank" rel="noopener noreferrer">Wikimedia Commons</a>, <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 3.0</a>, tanpa perubahan. Logo ShopeePay milik ShopeePay.</p>
+        </details>
+        <button type="button" id="newTransfer" class="secondary">Transfer antar dompet</button>
+      </section>
+
+      <!-- FLOATING DOCK NAVIGATION -->
+      <nav aria-label="Navigasi utama">
+        <button type="button" data-page="home" aria-current="page">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/>
+            <path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          </svg>
+          <span>Beranda</span>
+        </button>
+
+        <button type="button" data-page="history">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 5h.01"/><path d="M3 12h.01"/><path d="M3 19h.01"/>
+            <path d="M8 5h13"/><path d="M8 12h13"/><path d="M8 19h13"/>
+          </svg>
+          <span>Riwayat</span>
+        </button>
+
+        <div class="fab-wrap">
+          <div id="fabMenu" class="fab-menu" hidden>
+            <button type="button" data-new-kind="income" aria-label="Pemasukan">
+              <span class="fab-icon fab-icon--income" aria-hidden="true">+</span>
+              <span>Pemasukan</span>
+            </button>
+            <button type="button" data-new-kind="expense" aria-label="Pengeluaran">
+              <span class="fab-icon fab-icon--expense" aria-hidden="true">−</span>
+              <span>Pengeluaran</span>
+            </button>
+            <button type="button" data-new-kind="saving" aria-label="Tabungan">
+              <span class="fab-icon fab-icon--saving" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="8"/>
+                  <circle cx="12" cy="12" r="3"/>
+                </svg>
+              </span>
+              <span>Tabungan</span>
+            </button>
+          </div>
+          <button type="button" id="fab" aria-label="Catat transaksi" aria-expanded="false" aria-controls="fabMenu">+</button>
+        </div>
+
+        <button type="button" data-page="savings">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 17h3v2a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1v-3a3.16 3.16 0 0 0 2-2h1a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1h-1a5 5 0 0 0-2-4V3a4 4 0 0 0-3.2 1.6l-.3.4H11a6 6 0 0 0-6 6v1a5 5 0 0 0 2 4v3a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1z"/>
+            <path d="M16 10h.01"/>
+            <path d="M2 8v1a2 2 0 0 0 2 2h1"/>
+          </svg>
+          <span>Tabungan</span>
+        </button>
+
+        <button type="button" data-page="wallets">
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/>
+            <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/>
+          </svg>
+          <span>Dompet</span>
+        </button>
+      </nav>
+    </div>
+  </main>
+
+  <!-- DIALOGS -->
+  <dialog id="historyDateDialog" aria-labelledby="historyCalendarTitle">
+    <div class="history-calendar">
+      <div class="history-calendar-head">
+        <button type="button" id="historyPrevMonth" aria-label="Bulan sebelumnya">&#8249;</button>
+        <h2 id="historyCalendarTitle"></h2>
+        <button type="button" id="historyNextMonth" aria-label="Bulan berikutnya">&#8250;</button>
+      </div>
+      <div class="history-weekdays" aria-hidden="true">
+        <span>Min</span><span>Sen</span><span>Sel</span><span>Rab</span><span>Kam</span><span>Jum</span><span>Sab</span>
+      </div>
+      <div id="historyCalendarGrid" class="history-calendar-grid"></div>
+      <div class="dialog-stack">
+        <button type="button" id="historyToday">Hari ini</button>
+        <button type="button" id="historyDateClose">Tutup</button>
+      </div>
+    </div>
+  </dialog>
+
+  <dialog id="balanceDialog" aria-labelledby="balanceTitle">
+    <div class="balance-dialog">
+      <h2 id="balanceTitle">Saldo setiap dompet</h2>
+      <p>Di luar dompet Tabungan</p>
+      <div id="balanceWalletList"></div>
+      <button type="button" id="balanceClose">Tutup</button>
+    </div>
+  </dialog>
+
+  <dialog id="monthDialog" aria-labelledby="monthTitle">
+    <div class="month-picker">
+      <div class="month-picker-head">
+        <button type="button" id="prevYear" aria-label="Tahun sebelumnya">&#8249;</button>
+        <h2 id="monthTitle"></h2>
+        <button type="button" id="nextYear" aria-label="Tahun berikutnya">&#8250;</button>
+      </div>
+      <div id="monthGrid" class="month-grid"></div>
+      <button type="button" id="monthClose" class="month-close">Tutup</button>
+    </div>
+  </dialog>
+
+  <dialog id="transactionDialog">
+    <form id="transactionForm">
+      <div class="section-head">
+        <h2 id="transactionTitle">Catat transaksi</h2>
+        <button type="button" class="link close">Tutup</button>
+      </div>
+      <p class="dialogMessage" role="status"></p>
+      <label>Jenis
+        <select name="kind">
+          <option value="expense">Pengeluaran</option>
+          <option value="income">Pemasukan</option>
+          <option value="saving">Setoran tabungan</option>
+          <option value="saving_withdrawal" hidden>Penarikan tabungan</option>
+        </select>
+      </label>
+      <label>Nominal (Rp)
+        <input name="amount" type="number" min="1" max="9000000000000" step="1" required inputmode="numeric" placeholder="0">
+      </label>
+      <label>Tanggal
+        <input name="transaction_date" type="date" required>
+      </label>
+      <label>Kategori
+        <input name="category" required maxlength="80" placeholder="Contoh: belanja harian">
+      </label>
+      <label><span id="walletLabel">Dompet</span>
+        <select name="wallet" required></select>
+      </label>
+      <p id="walletHint" class="form-hint" hidden>Tambahkan dompet di menu Dompet terlebih dahulu.</p>
+      <label id="goalField" hidden>Target
+        <select name="goal_id"></select>
+      </label>
+      <div class="actions">
+        <button type="submit">Simpan transaksi</button>
+        <button type="button" id="deleteTransaction" class="danger" hidden>Hapus transaksi</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="goalDialog">
+    <form id="goalForm">
+      <div class="section-head">
+        <h2>Target baru</h2>
+        <button type="button" class="link close">Tutup</button>
+      </div>
+      <p class="dialogMessage" role="status"></p>
+      <label>Nama target
+        <input name="name" required maxlength="80" placeholder="Contoh: Dana darurat">
+      </label>
+      <label>Nominal target (Rp)
+        <input name="target" type="number" min="1" max="9000000000000" step="1" required inputmode="numeric" placeholder="0">
+      </label>
+      <button type="submit">Simpan target</button>
+    </form>
+  </dialog>
+
+  <dialog id="walletDialog">
+    <form id="walletForm">
+      <div class="section-head">
+        <h2>Dompet baru</h2>
+        <button type="button" class="link close">Tutup</button>
+      </div>
+      <p class="dialogMessage" role="status"></p>
+      <label>Nama dompet
+        <input name="name" required maxlength="80" placeholder="Contoh: BCA atau Tunai">
+      </label>
+      <label>Jenis dompet
+        <select name="kind">
+          <option value="cash">Tunai</option>
+          <option value="bank">Rekening bank</option>
+          <option value="ewallet">E-wallet</option>
+          <option value="other">Lainnya</option>
+        </select>
+      </label>
+      <p class="form-hint">Saldo awal Rp0. Catat pemasukan untuk menambah saldo.</p>
+      <button type="submit">Simpan dompet</button>
+    </form>
+  </dialog>
+
+  <dialog id="transferDialog">
+    <form id="transferForm">
+      <div class="section-head">
+        <h2>Transfer antar dompet</h2>
+        <button type="button" class="link close">Tutup</button>
+      </div>
+      <p class="dialogMessage" role="status" aria-live="polite"></p>
+      <label>Dompet asal
+        <select name="source_wallet" required></select>
+      </label>
+      <label>Dompet tujuan
+        <select name="destination_wallet" required></select>
+      </label>
+      <label>Nominal (Rp)
+        <input name="amount" type="number" min="1" max="9000000000000" step="1" required inputmode="numeric" placeholder="0">
+      </label>
+      <label>Tanggal
+        <input name="transfer_date" type="date" required>
+      </label>
+      <p class="form-hint">Transfer tidak dihitung sebagai pemasukan atau pengeluaran.</p>
+      <button type="submit">Simpan transfer</button>
+    </form>
+  </dialog>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.4/dist/umd/supabase.min.js"></script>
+  <script src="app.js?v=editorial-pastel-1"></script>
+</body>
+</html>

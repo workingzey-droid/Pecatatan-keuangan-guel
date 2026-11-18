@@ -1,277 +1,1297 @@
-:root{font-family:"Plus Jakarta Sans",system-ui,-apple-system,sans-serif;color:#202923;background:#f5f5ee;font-size:16px}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}.app{max-width:650px;margin:auto;padding:24px 20px 110px}header,.section-head{display:flex;align-items:center;justify-content:space-between;gap:12px}header{margin-bottom:32px}h1{font-size:1.35rem;margin:3px 0}h2{font-size:1.1rem;margin:0}small,span,p{color:#68736b}p{line-height:1.5}button{border:0;background:#194a37;color:white;padding:14px 18px;border-radius:10px;font-weight:650}button:disabled{opacity:.55}.quiet,.link{background:none;color:#245e46;padding:8px}.secondary{background:#e5ebe3;color:#194a37}.danger{background:#f7e8e5;color:#9d342c}label{display:grid;gap:7px;font-weight:600;margin:16px 0}input,select{width:100%;padding:12px;border:1px solid #b7c0b7;border-radius:8px;background:white;color:#202923}input[type=month]{width:auto}.balance{background:#194a37;border-radius:18px;padding:24px;color:white;display:grid;gap:10px}.balance span,.balance small{color:#d3e4d8}.balance strong{font-size:2rem;overflow-wrap:anywhere}.section-head{margin:30px 0 14px}.summary{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid #d4dcd3;border-bottom:1px solid #d4dcd3;margin-bottom:20px}.summary div{padding:16px 4px;display:grid;gap:5px}.summary strong{font-size:1.15rem}.summary div+div{border-left:1px solid #d4dcd3;padding-left:20px}#newTransaction{width:100%}.row{border-bottom:1px solid #d4dcd3;padding:16px 0}.rowhead{display:flex;justify-content:space-between;gap:10px}.row p{margin:5px 0;font-size:.9rem}.row button{background:none;color:inherit;padding:0;text-align:left;width:100%}.progress{height:7px;background:#dce5d9;border-radius:8px;margin:12px 0}.progress i{display:block;height:100%;background:#5b9b72;border-radius:8px}.empty{padding:16px 0;color:#68736b}nav{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #d4dcd3;display:flex;justify-content:center;padding:8px env(safe-area-inset-right) calc(8px + env(safe-area-inset-bottom))}nav button{background:none;color:#68736b;min-width:100px;font-size:.9rem}nav button[aria-current]{color:#194a37;background:#e8f0e7}dialog{border:0;border-radius:16px;padding:24px;width:min(94%,480px);max-height:90vh}dialog::backdrop{background:rgba(247,247,240,.24);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}dialog .section-head{margin:0 0 15px}dialog button:not(.link){width:100%}.actions{display:grid;gap:10px}#message:not(:empty){background:#fff3df;padding:12px;border-radius:8px;margin-bottom:16px}button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #c77c35;outline-offset:2px}
-:root nav button{min-width:0;flex:1;max-width:150px;padding:14px 5px}
-.transaction-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.transaction-actions button{padding:14px 4px;font-size:.85rem;overflow-wrap:anywhere}
+:root {
+  --bg-paper: #f8f7f4;
+  --surface-white: #ffffff;
+  --surface-muted: #efede7;
+  --ink-primary: #1c1c1e;
+  --ink-secondary: #6e6d72;
+  --ink-tertiary: #9a999e;
+  --border-subtle: #e7e4dc;
 
-/* Beranda: hierarchy and feedback for the household overview. */
-:root{color:#1d3026;background:#f7f7f0}
-.app{max-width:640px;padding:28px 22px 120px}
-.app>header{align-items:flex-end;margin-bottom:30px}
-.app>header small{font-size:.74rem;letter-spacing:.02em;color:#66776c}
-.app>header h1{font-size:1.4rem;letter-spacing:-.035em;margin:5px 0 0}
-.quiet{border-radius:8px;font-size:.84rem;padding:9px 11px}
-#home .balance{position:relative;overflow:hidden;gap:9px;min-height:164px;padding:24px;background:#194b38;border-radius:16px}
-#home .balance:after{content:"";position:absolute;left:24px;bottom:0;width:42px;height:3px;background:#bfdb9a;border-radius:3px 3px 0 0}
-#home .balance span{font-size:.82rem;color:#d9e8d9}
-#home .balance strong{font-size:clamp(1.85rem,7vw,2.35rem);line-height:1.1;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
-#home .balance small{font-size:.72rem;line-height:1.5;color:#d6e7d7}
-#home .section-head{margin:30px 0 14px;align-items:center}
-#home h2{font-size:1rem;letter-spacing:-.02em}
-#home input[type=month]{width:auto;max-width:52%;border-color:#d3ddd3;background:#fff;font-size:.8rem;padding:10px;border-radius:8px}
-#home .summary{margin:0 0 22px;border-color:#dce4d9}
-#home .summary div{gap:7px;padding:16px 2px}
-#home .summary div+div{padding-left:20px;border-color:#dce4d9}
-#home .summary span{font-size:.75rem;color:#607367}
-#home .summary strong{font-size:1rem;letter-spacing:-.02em;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
-.transaction-actions{gap:8px}
-.transaction-actions button{min-height:50px;background:#225941;font-size:.78rem;letter-spacing:-.01em;border:1px solid transparent;border-radius:10px}
-.transaction-actions button[data-new-kind=saving]{background:#e3eddd;color:#1b4a33;border-color:#c8dac6}
-#home .link{font-size:.8rem}
-#home .row{padding:14px 0;border-color:#dce4d9}
-#home .rowhead strong{font-size:.9rem}
-#home .rowhead span,#home .row p{font-size:.76rem}
-#home .progress{height:6px;background:#e2e9dc;margin:12px 0}
-#home .progress i{background:#6b9c69;transition:width .35s ease-out}
-#message:not(:empty){font-size:.85rem;border-left:3px solid #c8953e;border-radius:8px;padding:12px 14px;background:#fff4de;color:#574321}
-nav{background:#fff;border-color:#e0e8dd;box-shadow:0 -5px 18px rgba(24,60,39,.05)}
-nav button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-height:58px;border-radius:9px;font-size:.75rem;color:#516158;padding:7px 4px}
-nav button svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-nav button[aria-current]{background:#e7f0e4;color:#194b38}
-button,input,select{transition:background-color .18s ease,color .18s ease,border-color .18s ease,transform .18s ease}
-@media (hover:hover){button:not(:disabled):hover{filter:brightness(.95)}.quiet:hover,.link:hover{background:#e7efe5}nav button:hover{background:#eff4ed}}
-button:not(:disabled):active{transform:scale(.97)}
-dialog[open]{animation:sheet-in .22s ease-out}
-@keyframes sheet-in{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}
+  /* Palet pastel terinspirasi dari referensi */
+  --pastel-sky: #ddf0f6;
+  --pastel-sky-border: #1c1c1e;
+  --pastel-mint: #e4f2e7;
+  --pastel-mint-deep: #246b43;
+  --pastel-blush: #fae4e4;
+  --pastel-blush-deep: #b83b36;
+  --pastel-lavender: #ece7f6;
+  --pastel-lavender-deep: #5c4396;
+  --pastel-transfer: #e5f1f7;
 
-/* Soft elevation separates the overview cards from the page. */
-#home .balance{box-shadow:0 8px 20px rgba(24,60,39,.14)}
-#home .summary,#homeGoals .row{background:#fff;border:1px solid #e1e9df;border-radius:12px;box-shadow:0 5px 16px rgba(24,60,39,.08)}
-#home .summary div{padding:16px}
-#home .summary div+div{padding-left:20px}
-#homeGoals .row{padding:16px;margin-bottom:12px}
+  --radius-card: 22px;
+  --radius-row: 18px;
+  --radius-pill: 999px;
 
-/* Quick actions in the centre of the navigation. */
-.transaction-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
-.fab-wrap{position:relative;flex:1;max-width:90px;display:flex;justify-content:center;align-items:center}
-:root nav #fab{flex:none;width:54px;height:54px;min-height:54px;padding:0;margin-top:-30px;border:4px solid #fff;border-radius:50%;background:#225941;color:#fff;font-size:2rem;font-weight:400;line-height:1;box-shadow:0 5px 14px rgba(24,60,39,.25);transition:transform .2s ease,background-color .2s ease}
-:root nav #fab[aria-expanded=true]{transform:rotate(45deg);background:#194a37}
-.fab-menu{position:absolute;bottom:calc(100% + 14px);left:50%;transform:translateX(-50%);width:190px;padding:8px;background:#fff;border:1px solid #e1e9df;border-radius:14px;box-shadow:0 8px 24px rgba(24,60,39,.18)}
-.fab-menu[hidden]{display:none}
-:root nav .fab-menu button{display:flex;flex-direction:row;justify-content:flex-start;gap:12px;width:100%;max-width:none;min-height:44px;padding:8px 10px;color:#194b38;font-size:.85rem;text-align:left}
-.fab-menu button span{display:grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#e7f0e4;color:#194b38;font-size:1.1rem}
-@media (hover:hover){:root nav #fab:hover{background:#286b4d}}
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  color: var(--ink-primary);
+  background: var(--bg-paper);
+  font-size: 16px;
+}
 
-/* A welcoming sign-in, using the same palette as the dashboard. */
-#auth{max-width:450px;margin:clamp(18px,7vh,62px) auto 0;padding:30px;background:#fff;border:1px solid #e3ebe0;border-radius:22px;box-shadow:0 12px 32px rgba(24,60,39,.09)}
-.auth-icon{width:52px;height:52px;display:grid;place-items:center;border-radius:16px;background:#e6f0e2;color:#194b38;margin-bottom:24px}
-.auth-icon svg{width:28px;height:28px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-#auth .auth-eyebrow{margin:0 0 9px;color:#52745e;font-size:.68rem;font-weight:750;letter-spacing:.1em}
-#auth h2{font-size:clamp(1.5rem,6vw,1.85rem);letter-spacing:-.04em;line-height:1.15;color:#194b38}
-#auth .auth-intro>p:last-child{margin:11px 0 26px;color:#607367;font-size:.9rem}
-#auth label{font-size:.84rem;color:#263b2e;gap:8px;margin:0 0 18px}
-#auth input{height:52px;border-color:#d7e1d5;border-radius:11px;background:#fbfcf9;padding:0 15px}
-#auth input::placeholder{color:#89998c;font-weight:400}
-#auth input:focus{border-color:#4a8060;background:#fff}
-#auth .auth-submit{width:100%;min-height:52px;margin-top:6px;display:flex;align-items:center;justify-content:center;gap:12px;background:#194b38;border-radius:11px;box-shadow:0 5px 12px rgba(25,75,56,.16)}
-#auth .auth-submit span{color:inherit;font-size:1.1rem}
-#auth .auth-signup{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:3px;margin-top:19px;font-size:.85rem}
-#auth .auth-signup span{color:#68786d}
-#auth .auth-signup button{font-size:.85rem}
-@media(max-width:420px){#auth{padding:24px 20px;margin-top:24px}}
+* {
+  box-sizing: border-box;
+}
 
-/* Sign-in layout inspired by the centred mobile reference. */
-body:has(#auth:not([hidden])){background:#fff}
-.app:has(#auth:not([hidden])){min-height:100vh;padding-bottom:40px}
-.app:has(#auth:not([hidden]))>header{display:none}
-#auth{max-width:400px;margin:clamp(40px,12vh,120px) auto 0;padding:20px 8px;border:0;border-radius:0;box-shadow:none;background:transparent}
-#auth .auth-intro{text-align:center}
-#auth .auth-icon{margin:0 auto 16px;width:54px;height:54px;border-radius:16px}
-#auth .auth-eyebrow{display:none}
-#auth h2{font-size:1.65rem;letter-spacing:-.035em;color:#1d3026}
-#auth .auth-intro>p:last-child{margin:8px 0 34px;font-size:.9rem}
-#auth label{margin-bottom:16px}
-#auth input{height:54px;background:#edf3ec;border:1px solid transparent;border-radius:10px}
-#auth input:focus{background:#fff;border-color:#4a8060}
-#auth .auth-submit{margin-top:16px;border-radius:28px;box-shadow:none}
-#auth .auth-signup{margin-top:32px}
-@media(max-width:420px){#auth{margin-top:clamp(35px,10vh,85px);padding:18px 6px}}
+body {
+  margin: 0;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  -webkit-font-smoothing: antialiased;
+}
 
-/* Navigation feedback and centred quick action. */
-nav button{-webkit-tap-highlight-color:transparent}
-.fab-wrap{max-width:150px}
-:root nav #fab{font-size:0;position:relative}
-:root nav #fab::before,:root nav #fab::after{content:"";position:absolute;top:50%;left:50%;width:20px;height:2px;border-radius:2px;background:currentColor;transform:translate(-50%,-50%)}
-:root nav #fab::after{transform:translate(-50%,-50%) rotate(90deg)}
-.fab-menu:not([hidden]){animation:fab-menu-in .2s ease-out}
-@keyframes fab-menu-in{from{opacity:0;transform:translate(-50%,8px) scale(.96)}to{opacity:1;transform:translate(-50%,0) scale(1)}}
-nav button[data-page][aria-current]{animation:nav-select .24s ease-out}
-@keyframes nav-select{from{transform:scale(.94)}to{transform:scale(1)}}
-@media (prefers-reduced-motion:reduce){.fab-menu:not([hidden]),nav button[data-page][aria-current]{animation:none}}
+button,
+input,
+select {
+  font: inherit;
+}
 
-.fab-menu button span svg{width:18px;height:18px;stroke-width:2}
+button {
+  cursor: pointer;
+  border: 0;
+  background: var(--ink-primary);
+  color: #ffffff;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  font-weight: 700;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.18s ease, background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+}
 
-/* Fan out the quick actions around the central button. */
-.fab-menu{bottom:calc(100% - 7px);width:0;height:0;padding:0;border:0;background:none;box-shadow:none;overflow:visible}
-.fab-menu:not([hidden]){animation:none}
-:root nav .fab-menu button{position:absolute;display:grid;place-items:center;width:48px;height:48px;min-height:48px;padding:0;border:2px solid #fff;border-radius:50%;background:#e7f0e4;color:#194b38;box-shadow:0 5px 14px rgba(24,60,39,.2);animation:fan-in .24s ease-out backwards;transition:transform .18s ease,background-color .18s ease,box-shadow .18s ease}
-.fab-menu button:nth-child(1){left:-92px;bottom:7px}
-.fab-menu button:nth-child(2){left:-24px;bottom:55px;animation-delay:.035s}
-.fab-menu button:nth-child(3){left:44px;bottom:7px;animation-delay:.07s}
-.fab-menu button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-@keyframes fan-in{from{opacity:0;transform:translateY(14px) scale(.7)}to{opacity:1;transform:translateY(0) scale(1)}}
-@media (hover:hover){:root nav .fab-menu button:hover{transform:translateY(-4px) scale(1.08);background:#d2e8cf;box-shadow:0 8px 18px rgba(24,60,39,.25)}}
-@media (prefers-reduced-motion:reduce){:root nav .fab-menu button{animation:none;transition:none}}
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
 
-/* Centre each icon and stagger the three actions. */
-:root nav .fab-menu button{justify-content:center;align-content:center}
-:root nav .fab-menu button:nth-child(1){animation-delay:0s}
-:root nav .fab-menu button:nth-child(2){animation-delay:.09s}
-:root nav .fab-menu button:nth-child(3){animation-delay:.18s}
+button:not(:disabled):active {
+  transform: scale(0.97);
+}
 
-/* Blur the page while keeping the quick actions in focus. */
-nav:has(#fab[aria-expanded="true"]){z-index:5}
-nav:has(#fab[aria-expanded="true"])::before{content:"";position:fixed;inset:0;background:rgba(247,247,240,.28);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:1;animation:fab-backdrop-in .2s ease-out}
-nav:has(#fab[aria-expanded="true"]) .fab-wrap{z-index:2}
-@keyframes fab-backdrop-in{from{opacity:0}to{opacity:1}}
-@media (prefers-reduced-motion:reduce){nav:has(#fab[aria-expanded="true"])::before{animation:none}}
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2.5px solid var(--ink-primary);
+  outline-offset: 2px;
+}
 
-/* Savings goal card inspired by the selected reference. */
-#homeGoals .goal-card{padding:16px;background:#fff;border:1px solid #e8eee5;border-radius:14px;box-shadow:0 5px 16px rgba(24,60,39,.08)}
-.goal-card-head{display:flex;align-items:center;gap:10px;min-width:0}
-.goal-icon{display:grid;place-items:center;width:38px;height:38px;flex:none;border-radius:50%;background:#e3f1df;color:#398b4a}
-.goal-icon svg{width:23px;height:23px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.goal-detail{display:grid;gap:4px;min-width:0;flex:1}
-.goal-detail strong{font-size:.86rem;overflow-wrap:anywhere;color:#1d3026}
-.goal-detail span{font-size:.72rem;color:#68786d;overflow-wrap:anywhere}
-.goal-percent{font-size:.78rem;color:#1d3026;white-space:nowrap}
-#homeGoals .goal-card .progress{margin:14px 0 0;height:7px;background:#e8eee6}
-#homeGoals .goal-card .progress i{border-radius:inherit;background:#55a04f}
+/* Container utama: penuh di HP, rapi terpusat di laptop */
+.app {
+  max-width: 540px;
+  margin: 0 auto;
+  padding: 24px 20px 128px;
+}
 
-/* In-app month picker. */
-#home .month-button{background:#fff;color:#1d3026;border:1px solid #d3ddd3;border-radius:9px;font-size:.8rem;padding:10px 13px;white-space:nowrap}
-#monthDialog{width:min(90%,340px);padding:20px;border-radius:18px;box-shadow:0 18px 48px rgba(15,43,29,.2)}
-.month-picker-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
-.month-picker-head h2{font-size:1rem;color:#194b38}
-#monthDialog .month-picker-head button{width:38px;height:38px;padding:0;border-radius:50%;background:#edf4eb;color:#194b38;font-size:1.5rem;line-height:1}
-.month-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-#monthDialog .month-grid button{width:100%;padding:12px 4px;background:#f4f7f2;color:#345143;font-size:.82rem;border-radius:9px}
-#monthDialog .month-grid button[aria-pressed=true]{background:#194b38;color:#fff}
-#monthDialog .month-close{margin-top:16px;background:transparent;color:#245e46;font-size:.85rem}
+/* Header bergaya daily planner */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 20px;
+}
 
-/* Keep the modal surface stable while its contents gently enter. */
-#monthDialog[open]{animation:none}
-#monthDialog[open] .month-picker{animation:month-enter .36s cubic-bezier(.2,.7,.2,1) both}
-@keyframes month-enter{from{transform:translateY(9px)}to{transform:translateY(0)}}
-#monthDialog .month-close{min-height:44px;background:#eaf2e8;color:#194b38;border:1px solid #c9dcc8;border-radius:10px;font-weight:700}
-@media (hover:hover){#monthDialog .month-close:hover{background:#daeada}}
-@media (prefers-reduced-motion:reduce){#monthDialog[open] .month-picker{animation:none}}
+.header-copy small {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  margin-bottom: 3px;
+}
 
-/* Monthly totals as distinct, softly coloured cards. */
-#home .summary{gap:10px;background:transparent;border:0;border-radius:0;box-shadow:none}
-#home .summary div,#home .summary div+div{min-width:0;display:grid;grid-template-columns:24px minmax(0,1fr);column-gap:8px;row-gap:8px;align-items:center;padding:16px 14px;border:0;border-radius:12px;box-shadow:0 4px 12px rgba(24,60,39,.06)}
-#home .summary div:first-child{background:#f1eafb}
-#home .summary div:last-child{background:#fff0e9}
-#home .summary span{grid-column:1 / -1;font-size:.73rem;color:#68736b}
-#home .summary strong{grid-column:2;min-width:0;font-size:clamp(.83rem,3.6vw,1rem)}
-#home .summary div::before{grid-column:1;grid-row:2;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;color:#fff;font-size:1rem;font-weight:700;line-height:1}
-#home .summary div:first-child::before{content:"+";background:#8752c7}
-#home .summary div:last-child::before{content:"−";background:#ef7647}
+.header-copy h1 {
+  margin: 0;
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: var(--ink-primary);
+}
 
-/* Use the app's own feedback instead of the browser's blue tap flash. */
-button,input[type="button"],input[type="submit"],input[type="reset"],[role="button"]{-webkit-tap-highlight-color:transparent}
+.header-pill-btn {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-subtle);
+  flex: none;
+}
 
-/* Centre both monthly cards on the same layout. */
-#home .summary div,#home .summary div+div{grid-template-columns:24px minmax(0,max-content);justify-content:center;text-align:center}
-#home .summary strong{text-align:left;overflow-wrap:anywhere}
+.header-pill-btn svg {
+  width: 20px;
+  height: 20px;
+}
 
-/* Keep the icons aligned even when the amounts have different lengths. */
-#home .summary div,#home .summary div+div{grid-template-columns:24px minmax(0,1fr);justify-content:stretch}
+@media (hover: hover) {
+  .header-pill-btn:hover {
+    background: var(--surface-muted);
+  }
+}
 
-/* Draw the signs geometrically so they stay centred in each circle. */
-#home .summary div::before{content:"";background-repeat:no-repeat;background-position:center}
-#home .summary div:first-child::before{content:"";background-image:linear-gradient(#fff,#fff),linear-gradient(#fff,#fff);background-size:10px 2px,2px 10px}
-#home .summary div:last-child::before{content:"";background-image:linear-gradient(#fff,#fff);background-size:10px 2px}
-#home .summary div:first-child::before,#home .summary div:last-child::before{background-position:center;background-repeat:no-repeat}
+/* Status / notifikasi */
+#message:not(:empty) {
+  background: #fff4dd;
+  color: #4f3a12;
+  border: 1px solid #f0dcaf;
+  border-radius: 14px;
+  padding: 12px 15px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+}
 
-/* Available balance breakdown */
-#home .balance{width:100%;text-align:left;cursor:pointer}
-#home .balance:focus-visible{outline:3px solid #c77c35;outline-offset:3px}
-#balanceDialog{width:min(90%,400px);padding:24px;border-radius:18px;box-shadow:0 18px 48px rgba(15,43,29,.2)}
-.balance-dialog h2{color:#194b38;font-size:1.05rem}
-.balance-dialog>p{font-size:.8rem;margin:6px 0 16px}
-.balance-wallet-row{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px solid #e4ebe2}
-.balance-wallet-row span{color:#34493d;overflow-wrap:anywhere}
-.balance-wallet-row strong{text-align:right;overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
-.balance-empty{font-size:.85rem;color:#68736b}
-#balanceDialog #balanceClose{width:100%;min-height:44px;margin-top:20px;background:#eaf2e8;color:#194b38;border:1px solid #c9dcc8;border-radius:10px;font-weight:700}
+/* Strip kalender 7 hari */
+.week-strip {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 20px;
+}
 
-/* Wallet brand marks retain their original proportions. */
-.wallet-identity{display:flex;align-items:center;gap:10px;min-width:0;flex:1}
-.wallet-identity strong,.wallet-identity span{min-width:0;overflow-wrap:anywhere}
-.wallet-logo{display:block;flex:none;width:76px;height:32px;object-fit:contain;padding:3px;background:#fff;border-radius:6px}
-.balance-wallet-row .wallet-identity{color:#34493d}
-.wallet-logo-credits{font-size:.72rem;color:#68736b;margin:12px 0}
-.wallet-logo-credits p{font-size:inherit}
-.wallet-logo-credits a{color:#245e46}
+.week-day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 4px;
+  background: transparent;
+  color: var(--ink-secondary);
+  border-radius: var(--radius-pill);
+  font-weight: 600;
+}
 
-/* History date filter */
-#history .section-head{margin-bottom:12px}
-.history-date-button{display:flex;align-items:center;gap:9px;width:100%;padding:13px 14px;background:#fff;color:#194b38;border:1px solid #dbe7da;border-radius:12px;font-size:.85rem;text-align:left;box-shadow:0 4px 12px rgba(24,60,39,.06)}
-.history-date-button svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.history-date-button #historyDateLabel{flex:1;color:inherit}
-.history-date-button span:last-child{color:#194b38;font-size:1.1rem}
-#history #transactions{margin-top:14px}
-#historyDateDialog{width:min(92%,360px);padding:20px;border-radius:18px;box-shadow:0 18px 48px rgba(15,43,29,.2)}
-#historyDateDialog[open]{animation:none}
-#historyDateDialog[open] .history-calendar{animation:month-enter .36s cubic-bezier(.2,.7,.2,1) both}
-.history-calendar-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
-.history-calendar-head h2{font-size:1rem;color:#194b38}
-#historyDateDialog .history-calendar-head button{width:38px;height:38px;padding:0;border-radius:50%;background:#edf4eb;color:#194b38;font-size:1.5rem}
-.history-weekdays,.history-calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;text-align:center}
-.history-weekdays{margin-bottom:5px;font-size:.7rem}
-#historyDateDialog .history-calendar-grid button{width:100%;aspect-ratio:1;padding:0;background:transparent;color:#34493d;border-radius:50%;font-size:.8rem}
-#historyDateDialog .history-calendar-grid button[aria-pressed=true]{background:#194b38;color:#fff}
-#historyDateDialog #historyToday,#historyDateDialog #historyDateClose{width:100%;min-height:44px;margin-top:12px;border-radius:10px;font-size:.85rem}
-#historyDateDialog #historyToday{background:#194b38;color:#fff}
-#historyDateDialog #historyDateClose{background:#eaf2e8;color:#194b38;border:1px solid #c9dcc8}
-@media (prefers-reduced-motion:reduce){#historyDateDialog[open] .history-calendar{animation:none}}
+.week-day-name {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: inherit;
+}
 
-/* Slide each selected section up into view. */
-.page-enter{animation:page-rise .28s cubic-bezier(.2,.7,.2,1) both}
-@keyframes page-rise{from{opacity:.55;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){.page-enter{animation:none}}
+.week-day-num {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  border: 1.5px solid var(--border-subtle);
+  background: var(--surface-white);
+}
 
+.week-day.is-today {
+  background: var(--ink-primary);
+  color: #ffffff;
+  padding: 9px 4px;
+}
 
-/* Individual history entries read as clear, tappable cards. */
-#history #transactions .row{margin-bottom:10px;padding:14px 15px;background:#fff;border:1px solid #e2eae0;border-radius:12px;box-shadow:0 4px 14px rgba(24,60,39,.07)}
-#history #transactions .row:last-child{margin-bottom:0}
-#history #transactions .row>button{border-radius:8px}
-.logout-button{display:grid;place-items:center;width:40px;height:40px;padding:0;border:1px solid #dce7db;border-radius:12px;background:#fff;color:#194b38}
-.logout-button svg{width:19px;height:19px}
-@media(hover:hover){.logout-button:hover{background:#eaf2e8}}
+.week-day.is-today .week-day-name {
+  color: #d4d4d8;
+}
 
+.week-day.is-today .week-day-num {
+  background: transparent;
+  border-color: transparent;
+  color: #ffffff;
+}
 
-/* Savings: one household progress summary and tidy goal cards. */
-#savings .section-head{margin:0 0 16px;align-items:center}
-#savingsOverview{margin-bottom:14px}
-.savings-overview-card{padding:18px 17px;background:#eaf2e8;border:1px solid #dbe8d8;border-radius:16px;box-shadow:0 5px 16px rgba(24,60,39,.07)}
-.savings-overview-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.savings-overview-head>div{display:grid;gap:6px}
-.savings-overview-head>div span{font-size:.75rem;color:#5d7163}
-.savings-overview-head>div strong{font-size:1.45rem;letter-spacing:-.04em;color:#194b38;font-variant-numeric:tabular-nums}
-.savings-overview-percent{font-size:.83rem;color:#194b38;white-space:nowrap}
-.savings-overview-card .progress{height:7px;margin:14px 0 9px;background:#d5e2d2}
-.savings-overview-card .progress i{background:#4b965a;transition:width .35s ease-out}
-.savings-overview-foot{display:flex;justify-content:space-between;gap:8px;font-size:.7rem;color:#68786d}
-.savings-goals{display:grid;gap:11px}
-.savings-goal-card{padding:15px 15px 13px;background:#fff;border:1px solid #e3eae0;border-radius:14px;box-shadow:0 5px 16px rgba(24,60,39,.07)}
-.savings-goal-head{display:flex;align-items:center;gap:10px;min-width:0}
-.savings-goal-title{display:grid;gap:4px;min-width:0;flex:1}
-.savings-goal-title strong{font-size:.86rem;color:#1d3026;overflow-wrap:anywhere}
-.savings-goal-title span{font-size:.7rem;color:#748176}
-.savings-goal-percent{font-size:.76rem;color:#34493d;white-space:nowrap}
-.savings-goal-card .progress{height:7px;margin:13px 0 9px;background:#e7eee4}
-.savings-goal-card .progress i{background:#55a04f;transition:width .35s ease-out}
-.savings-goal-foot{display:flex;justify-content:space-between;gap:8px;color:#68786d;font-size:.7rem;font-variant-numeric:tabular-nums}
-#withdrawSavings{width:100%;min-height:48px;margin-top:16px;border-radius:11px;background:#194b38;color:#fff}
-@media(prefers-reduced-motion:reduce){.savings-overview-card .progress i,.savings-goal-card .progress i{transition:none}}
+@media (hover: hover) {
+  .week-day:not(.is-today):hover .week-day-num {
+    border-color: var(--ink-primary);
+  }
+}
+
+/* Kartu Saldo Utama (Sorotan Pastel Biru Langit + Garis Tegas) */
+.balance {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  gap: 14px;
+  padding: 22px;
+  background: var(--pastel-sky);
+  color: var(--ink-primary);
+  border: 1.5px solid var(--pastel-sky-border);
+  border-radius: 24px;
+}
+
+.balance-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.balance-label {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #27444e;
+}
+
+.balance-badge {
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  font-size: 0.73rem;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.balance strong {
+  font-size: clamp(2rem, 7.5vw, 2.55rem);
+  font-weight: 800;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--ink-primary);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.balance-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--ink-primary);
+  color: #ffffff;
+  border-radius: var(--radius-pill);
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.balance-cta svg {
+  width: 16px;
+  height: 16px;
+  flex: none;
+}
+
+@media (hover: hover) {
+  .balance:hover {
+    background: #d2ebf3;
+  }
+}
+
+/* Section Head */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 26px 0 14px;
+}
+
+.section-head h2 {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  color: var(--ink-primary);
+}
+
+.section-desc {
+  margin: -4px 0 16px;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: var(--ink-secondary);
+}
+
+.link {
+  background: none;
+  color: var(--ink-secondary);
+  padding: 6px 10px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+}
+
+@media (hover: hover) {
+  .link:hover {
+    background: var(--surface-muted);
+    color: var(--ink-primary);
+  }
+}
+
+.pill-action {
+  background: var(--ink-primary);
+  color: #ffffff;
+  padding: 8px 15px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+}
+
+.secondary {
+  width: 100%;
+  margin-top: 16px;
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  font-size: 0.88rem;
+}
+
+@media (hover: hover) {
+  .secondary:hover {
+    border-color: var(--ink-primary);
+    background: var(--surface-muted);
+  }
+}
+
+.danger {
+  background: var(--pastel-blush);
+  color: var(--pastel-blush-deep);
+}
+
+/* Tombol pemilih bulan */
+.month-button {
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-pill);
+  padding: 8px 14px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+@media (hover: hover) {
+  .month-button:hover {
+    border-color: var(--ink-primary);
+  }
+}
+
+/* Ringkasan Bulanan: 2 Kartu Pastel Sejajar */
+.summary {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.summary-card {
+  display: grid;
+  gap: 14px;
+  padding: 16px;
+  border-radius: var(--radius-card);
+  min-width: 0;
+}
+
+.summary-card--income {
+  background: var(--pastel-mint);
+}
+
+.summary-card--expense {
+  background: var(--pastel-blush);
+}
+
+.summary-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.summary-icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--surface-white);
+  flex: none;
+}
+
+.summary-card--income .summary-icon {
+  color: var(--pastel-mint-deep);
+}
+
+.summary-card--expense .summary-icon {
+  color: var(--pastel-blush-deep);
+}
+
+.summary-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.summary-card-top span:last-child {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+}
+
+.summary-card strong {
+  font-size: clamp(0.95rem, 4vw, 1.15rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--ink-primary);
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+/* Kartu Target Tabungan (Beranda & Tab Tabungan) */
+#homeGoals .goal-card,
+.savings-goal-card {
+  padding: 18px;
+  background: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-card);
+}
+
+.goal-card-head,
+.savings-goal-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.goal-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  flex: none;
+  border-radius: 50%;
+  background: var(--pastel-lavender);
+  color: var(--pastel-lavender-deep);
+}
+
+.goal-icon svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.goal-detail,
+.savings-goal-title {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  flex: 1;
+}
+
+.goal-detail strong,
+.savings-goal-title strong {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  overflow-wrap: anywhere;
+}
+
+.goal-detail span,
+.savings-goal-title span {
+  font-size: 0.76rem;
+  color: var(--ink-secondary);
+  overflow-wrap: anywhere;
+}
+
+.goal-percent,
+.savings-goal-percent {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--ink-primary);
+  background: var(--bg-paper);
+  padding: 5px 10px;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+.progress {
+  height: 8px;
+  background: var(--surface-muted);
+  border-radius: var(--radius-pill);
+  margin: 14px 0 0;
+  overflow: hidden;
+}
+
+.progress i {
+  display: block;
+  height: 100%;
+  background: var(--ink-primary);
+  border-radius: var(--radius-pill);
+  transition: width 0.35s ease-out;
+}
+
+/* Halaman Tabungan */
+#savings .section-head {
+  margin-top: 4px;
+}
+
+#savingsOverview {
+  margin-bottom: 14px;
+}
+
+.savings-overview-card {
+  padding: 20px;
+  background: var(--pastel-lavender);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: var(--radius-card);
+}
+
+.savings-overview-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.savings-overview-head > div {
+  display: grid;
+  gap: 4px;
+}
+
+.savings-overview-head > div span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--pastel-lavender-deep);
+}
+
+.savings-overview-head > div strong {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  color: var(--ink-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.savings-overview-percent {
+  font-size: 0.82rem;
+  font-weight: 800;
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.savings-overview-card .progress {
+  background: rgba(255, 255, 255, 0.7);
+  margin: 14px 0 10px;
+}
+
+.savings-overview-foot,
+.savings-goal-foot {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ink-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.savings-goal-foot {
+  margin-top: 10px;
+}
+
+.savings-goals {
+  display: grid;
+  gap: 12px;
+}
+
+/* Halaman Riwayat & Daftar Transaksi (Kartu Bertumpuk Pastel) */
+#history .section-head,
+#wallets .section-head {
+  margin-top: 4px;
+}
+
+.history-date-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-subtle);
+  border-radius: 16px;
+  font-size: 0.86rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.history-date-icon {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  flex: none;
+}
+
+.history-date-icon svg {
+  width: 17px;
+  height: 17px;
+}
+
+.history-date-button #historyDateLabel {
+  flex: 1;
+}
+
+.history-date-chevron {
+  color: var(--ink-secondary);
+  font-size: 1.1rem;
+}
+
+#transactions {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.row {
+  border-radius: var(--radius-row);
+  background: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  padding: 14px 16px;
+  transition: transform 0.16s ease;
+}
+
+.row--income {
+  background: var(--pastel-mint);
+  border-color: transparent;
+}
+
+.row--expense {
+  background: var(--pastel-blush);
+  border-color: transparent;
+}
+
+.row--saving,
+.row--saving_withdrawal {
+  background: var(--pastel-lavender);
+  border-color: transparent;
+}
+
+.row--transfer {
+  background: var(--pastel-transfer);
+  border-color: transparent;
+}
+
+.row > button {
+  display: block;
+  width: 100%;
+  padding: 0;
+  background: none;
+  color: inherit;
+  text-align: left;
+  border-radius: 0;
+}
+
+.row-main {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.row-badge {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  flex: none;
+}
+
+.row--income .row-badge {
+  color: var(--pastel-mint-deep);
+}
+
+.row--expense .row-badge {
+  color: var(--pastel-blush-deep);
+}
+
+.row--saving .row-badge,
+.row--saving_withdrawal .row-badge {
+  color: var(--pastel-lavender-deep);
+}
+
+.row-badge svg {
+  width: 18px;
+  height: 18px;
+}
+
+.row-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.rowhead {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.rowhead strong:first-child {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  overflow-wrap: anywhere;
+}
+
+.row-amount {
+  font-size: 0.92rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.row--income .row-amount {
+  color: var(--pastel-mint-deep);
+}
+
+.row--expense .row-amount {
+  color: var(--pastel-blush-deep);
+}
+
+.row p {
+  margin: 3px 0 0;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+}
+
+.empty {
+  padding: 28px 16px;
+  text-align: center;
+  font-size: 0.86rem;
+  color: var(--ink-secondary);
+  background: var(--surface-white);
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-card);
+  margin: 8px 0 0;
+}
+
+/* Halaman Dompet */
+#walletList {
+  display: grid;
+  gap: 10px;
+}
+
+.wallet-card {
+  background: var(--surface-white);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-row);
+  padding: 16px;
+}
+
+.wallet-card .rowhead {
+  align-items: center;
+}
+
+.wallet-card p {
+  margin: 6px 0 0;
+  font-size: 0.76rem;
+  color: var(--ink-secondary);
+}
+
+.wallet-identity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1;
+}
+
+.wallet-identity strong,
+.wallet-identity span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.wallet-logo {
+  display: block;
+  flex: none;
+  width: 72px;
+  height: 30px;
+  object-fit: contain;
+  padding: 3px 6px;
+  background: var(--bg-paper);
+  border-radius: 8px;
+}
+
+.wallet-logo-credits {
+  font-size: 0.74rem;
+  color: var(--ink-secondary);
+  margin: 14px 0 4px;
+}
+
+.wallet-logo-credits summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.wallet-logo-credits p {
+  margin: 6px 0 0;
+  line-height: 1.5;
+}
+
+.wallet-logo-credits a {
+  color: var(--ink-primary);
+}
+
+/* FLOATING DARK PILL DOCK */
+nav {
+  position: fixed;
+  bottom: max(16px, env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(calc(100% - 28px), 430px);
+  background: var(--ink-primary);
+  border-radius: var(--radius-pill);
+  padding: 6px 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  box-shadow: 0 14px 34px rgba(28, 28, 30, 0.24);
+  z-index: 10;
+}
+
+nav button[data-page] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 44px;
+  min-width: 44px;
+  padding: 0 12px;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: #9e9ea6;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+nav button[data-page] svg {
+  width: 19px;
+  height: 19px;
+  flex: none;
+}
+
+nav button[data-page] span {
+  display: none;
+  color: inherit;
+  white-space: nowrap;
+}
+
+nav button[data-page][aria-current] {
+  background: #333337;
+  color: #ffffff;
+  padding: 0 15px;
+}
+
+nav button[data-page][aria-current] span {
+  display: inline;
+}
+
+@media (hover: hover) {
+  nav button[data-page]:not([aria-current]):hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Tombol Tambah (+) di tengah dock */
+.fab-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+#fab {
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--pastel-sky);
+  color: var(--ink-primary);
+  font-size: 0;
+  position: relative;
+  flex: none;
+}
+
+#fab::before,
+#fab::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 2.2px;
+  border-radius: 2px;
+  background: var(--ink-primary);
+  transform: translate(-50%, -50%);
+  transition: transform 0.2s ease;
+}
+
+#fab::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+#fab[aria-expanded="true"] {
+  background: #ffffff;
+  transform: rotate(45deg);
+}
+
+/* Menu cepat di atas tombol + */
+.fab-menu {
+  position: absolute;
+  bottom: calc(100% + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: grid;
+  gap: 8px;
+  width: 205px;
+  padding: 10px;
+  background: var(--surface-white);
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 22px;
+  box-shadow: 0 16px 36px rgba(28, 28, 30, 0.18);
+  animation: fab-pop 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.fab-menu[hidden] {
+  display: none;
+}
+
+.fab-menu button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 12px;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  border-radius: 14px;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-align: left;
+}
+
+.fab-icon {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 1.05rem;
+  font-weight: 800;
+  flex: none;
+}
+
+.fab-icon--income {
+  background: var(--pastel-mint);
+  color: var(--pastel-mint-deep);
+}
+
+.fab-icon--expense {
+  background: var(--pastel-blush);
+  color: var(--pastel-blush-deep);
+}
+
+.fab-icon--saving {
+  background: var(--pastel-lavender);
+  color: var(--pastel-lavender-deep);
+}
+
+.fab-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+@media (hover: hover) {
+  .fab-menu button:hover {
+    background: var(--surface-muted);
+  }
+}
+
+@keyframes fab-pop {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* Backdrop lembut saat menu + terbuka */
+nav:has(#fab[aria-expanded="true"])::before {
+  content: "";
+  position: fixed;
+  inset: -100vh -100vw;
+  background: rgba(248, 247, 244, 0.55);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: -1;
+}
+
+/* Dialog / Modal Sheets */
+dialog {
+  border: 1.5px solid var(--ink-primary);
+  border-radius: 26px;
+  padding: 24px;
+  width: min(92%, 420px);
+  max-height: 88vh;
+  overflow-y: auto;
+  background: var(--surface-white);
+  color: var(--ink-primary);
+  box-shadow: 0 24px 54px rgba(28, 28, 30, 0.2);
+}
+
+dialog::backdrop {
+  background: rgba(28, 28, 30, 0.28);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+dialog[open] {
+  animation: sheet-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes sheet-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+dialog .section-head {
+  margin: 0 0 16px;
+}
+
+dialog button:not(.link) {
+  width: 100%;
+}
+
+.dialogMessage:not(:empty) {
+  background: #fff4dd;
+  color: #4f3a12;
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin: 0 0 12px;
+}
+
+label {
+  display: grid;
+  gap: 7px;
+  font-size: 0.83rem;
+  font-weight: 700;
+  color: var(--ink-primary);
+  margin: 14px 0;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 14px;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  font-size: 0.92rem;
+}
+
+input:focus,
+select:focus {
+  background: var(--surface-white);
+  border-color: var(--ink-primary);
+}
+
+.form-hint {
+  margin: 8px 0 14px;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  color: var(--ink-secondary);
+}
+
+.actions,
+.dialog-stack {
+  display: grid;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+/* Dialog Rincian Saldo Dompet */
+.balance-dialog h2 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 800;
+}
+
+.balance-dialog > p {
+  font-size: 0.8rem;
+  color: var(--ink-secondary);
+  margin: 4px 0 16px;
+}
+
+.balance-wallet-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.balance-wallet-row:last-of-type {
+  border-bottom: 0;
+}
+
+.balance-wallet-row strong {
+  font-variant-numeric: tabular-nums;
+}
+
+.balance-empty {
+  font-size: 0.85rem;
+  color: var(--ink-secondary);
+}
+
+#balanceClose {
+  margin-top: 16px;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Dialog Pemilih Bulan & Kalender Riwayat */
+#monthDialog,
+#historyDateDialog {
+  width: min(92%, 360px);
+  padding: 20px;
+}
+
+.month-picker-head,
+.history-calendar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.month-picker-head h2,
+.history-calendar-head h2 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 800;
+}
+
+#monthDialog .month-picker-head button,
+#historyDateDialog .history-calendar-head button {
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-subtle);
+  font-size: 1.35rem;
+  line-height: 1;
+}
+
+.month-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+#monthDialog .month-grid button {
+  padding: 12px 4px;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  font-size: 0.82rem;
+  border-radius: 12px;
+}
+
+#monthDialog .month-grid button[aria-pressed="true"] {
+  background: var(--ink-primary);
+  color: #ffffff;
+}
+
+#monthDialog .month-close,
+#historyDateDialog #historyDateClose {
+  margin-top: 12px;
+  background: var(--bg-paper);
+  color: var(--ink-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.history-weekdays,
+.history-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  text-align: center;
+}
+
+.history-weekdays {
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink-secondary);
+}
+
+#historyDateDialog .history-calendar-grid button {
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 0;
+  background: transparent;
+  color: var(--ink-primary);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+#historyDateDialog .history-calendar-grid button[aria-pressed="true"] {
+  background: var(--ink-primary);
+  color: #ffffff;
+}
+
+/* Animasi masuk halaman */
+.page-enter {
+  animation: page-rise 0.25s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+@keyframes page-rise {
+  from {
+    opacity: 0.6;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
