@@ -1,10 +1,11 @@
 # Uang Bersama
 
-Aplikasi pencatatan keuangan rumah tangga. Buka `index.html` melalui server HTTP. Supabase Auth memakai email dan kata sandi. Setoran tabungan mengurangi saldo yang bisa dipakai, dan saldo awal dicatat sebagai pemasukan.
+Aplikasi pencatatan keuangan rumah tangga. Buka melalui server HTTP. Aplikasi tidak meminta akun email atau kata sandi dan langsung memuat data rumah tangga bersama dari Supabase.
 
 ## Pengaturan
 
-Terapkan `schema.sql` sekali pada proyek Supabase baru. Buat akun menggunakan formulir pendaftaran, konfirmasi email, lalu administrator menambahkan masing-masing ID akun ke `public.household_members` dengan `household_id` UUID yang sama. Hanya anggota yang ditambahkan dapat mengakses data. Atur URL situs dan redirect Supabase Auth sesuai alamat aplikasi yang dipasang. Kunci publishable pada `app.js` memang untuk browser; jangan tambahkan service role key ke kode.
+Terapkan `schema.sql` dan file migrasi SQL lain sesuai urutannya. Terapkan `public_household_access.sql` untuk membuka akses anonim hanya ke household ID yang dipakai aplikasi. Kunci publishable pada `app.js` memang untuk browser; jangan tambahkan service role key ke kode.
 
-Data diperbarui saat halaman aktif setiap 15 detik. Tindakan simpan yang gagal bisa dicoba ulang tanpa membuat ID transaksi baru. Aplikasi belum diuji dengan dua akun nyata dan perlu uji menyeluruh sebelum digunakan untuk data keuangan sebenarnya.
+**Privasi:** aplikasi dan repo ini publik. Tanpa login atau kode pasangan, siapa pun yang mengetahui alamat aplikasi dapat membaca dan mengubah data rumah tangga tersebut. Row Level Security (RLS) membatasi akses ke household ID aplikasi ini; jangan masukkan informasi yang harus dirahasiakan.
 
+Data diperbarui saat halaman aktif setiap 15 detik. Tindakan simpan yang gagal bisa dicoba ulang tanpa membuat ID transaksi baru.
